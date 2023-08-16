@@ -12,6 +12,7 @@ from rest_framework.pagination import LimitOffsetPagination
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['title', 'description']
     ordering_fields = ['id', 'title']
     pagination_class = LimitOffsetPagination
